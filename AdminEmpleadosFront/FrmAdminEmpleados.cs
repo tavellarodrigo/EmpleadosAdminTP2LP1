@@ -23,8 +23,9 @@ namespace AdminEmpleadosFront
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            buscarEmpleados();           
+            buscarEmpleados();
         }
+       
         private void buscarEmpleados()
         {
             //Obtengo el nombre ingresado por el usuario
@@ -37,8 +38,15 @@ namespace AdminEmpleadosFront
             if (!String.IsNullOrEmpty(nombreBuscar.Trim()))
                 parametro.Nombre = nombreBuscar;
 
-            //Busco la lista de empleados en la capa de negocio, pasandole el parametro ingresado
-            empleadosList = EmpleadosNegocio.Get(parametro);
+            try
+            {
+                //Busco la lista de empleados en la capa de negocio, pasandole el parametro ingresado
+                empleadosList = EmpleadosNegocio.Get(parametro);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             //Actualizo la grilla
             refreshGrid();
         }
@@ -48,7 +56,7 @@ namespace AdminEmpleadosFront
             //Actualizo el Binding con la lista de empleados que viene desde la BD
             empleadoBindingSource.DataSource = null;
             empleadoBindingSource.DataSource = empleadosList;
-            
+
         }
 
         private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
@@ -70,13 +78,14 @@ namespace AdminEmpleadosFront
             frm.ShowDialog();
 
             buscarEmpleados();
-        }
-
-        private void CargarDatosEmpleado()
-        {
-
-        }
+        }  
+      
         private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            Consultar();
+        }
+
+        private void Consultar()
         {
             if (empleadoBindingSource.Current == null)
                 return;
@@ -97,14 +106,45 @@ namespace AdminEmpleadosFront
                 return;
 
             FrmEditEmpleados frm = new FrmEditEmpleados();
-            
+
             frm.modo = EnumModoForm.Modificacion;
             frm._empleado = (Empleado)empleadoBindingSource.Current;
 
             frm.ShowDialog();
 
             buscarEmpleados();
-            
+
+        }
+
+        private void btnBaja_Click(object sender, EventArgs e)
+        {
+            if (empleadoBindingSource.Current == null)
+                return;
+
+            Empleado emp = (Empleado)empleadoBindingSource.Current;
+
+            //pregunto si quiere guardar los datos
+            DialogResult res = MessageBox.Show("¿Confirma anular el empleado " + emp.Nombre + " ?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.No)
+            {
+                return;
+            }
+
+            emp.anulado = true;
+
+            try
+            {
+                EmpleadosNegocio.Update(emp);
+                MessageBox.Show("El empleado " + emp.Nombre + " se anuló correctamente", "Anulación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            buscarEmpleados();
+
         }
     }
 }

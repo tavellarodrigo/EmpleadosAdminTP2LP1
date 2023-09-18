@@ -36,6 +36,7 @@ namespace AdminEmpleadosNegocio
 
             try
             {
+                e.anulado = false;
                 return EmpleadosDatosEF.Insert(e);
                 //return EmpleadosDatos.Insert(e);
             }       

@@ -19,7 +19,10 @@ namespace AdminEmpleadosDatos
             //Lazy Loading
             //List<Empleado> list = empleadosContext.empleados.ToList(); //sin departamentos
 
-            List<Empleado> list = empleadosContext.empleados.Include("Departamento").ToList();
+            List<Empleado> list = empleadosContext.empleados.Where(i=>                
+                    i.Nombre!=null && e.Nombre != null &&
+                    i.Nombre.Contains(e.Nombre))                
+                .Include("Departamento").ToList();
 
             return list;
         }
@@ -28,6 +31,7 @@ namespace AdminEmpleadosDatos
         {
             //por las dudas seteo el ID en null para que realice el insert
             e.id = null;
+            e.Departamento = null; //importante
             empleadosContext = new EmpleadosContext();
             empleadosContext.Add(e);
             empleadosContext.SaveChanges();
@@ -44,6 +48,7 @@ namespace AdminEmpleadosDatos
             if (empleadoBD== null)
                 return false;
 
+            empleadoBD.Departamento = null;
             empleadoBD.Direccion = e.Direccion;
             empleadoBD.Dni = e.Dni;
             empleadoBD.Salario = e.Salario;

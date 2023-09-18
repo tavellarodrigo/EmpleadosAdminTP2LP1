@@ -28,212 +28,205 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Salario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreDepartamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empleadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.btnAlta = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnConsultar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnBaja = new System.Windows.Forms.Button();
-            this.btnCerrar = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            dataGridView1 = new DataGridView();
+            id = new DataGridViewTextBoxColumn();
+            Dni = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Direccion = new DataGridViewTextBoxColumn();
+            FechaIngreso = new DataGridViewTextBoxColumn();
+            Salario = new DataGridViewTextBoxColumn();
+            NombreDepartamento = new DataGridViewTextBoxColumn();
+            empleadoBindingSource = new BindingSource(components);
+            txtBuscar = new TextBox();
+            btnAlta = new Button();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            btnBuscar = new Button();
+            btnConsultar = new Button();
+            btnModificar = new Button();
+            btnBaja = new Button();
+            btnCerrar = new Button();
+            panel1 = new Panel();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)empleadoBindingSource).BeginInit();
+            flowLayoutPanel1.SuspendLayout();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.Dni,
-            this.Nombre,
-            this.Direccion,
-            this.FechaIngreso,
-            this.Salario,
-            this.NombreDepartamento});
-            this.dataGridView1.DataSource = this.empleadoBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(108, 28);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(837, 460);
-            this.dataGridView1.TabIndex = 0;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToOrderColumns = true;
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id, Dni, Nombre, Direccion, FechaIngreso, Salario, NombreDepartamento });
+            dataGridView1.DataSource = empleadoBindingSource;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(108, 28);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(837, 460);
+            dataGridView1.TabIndex = 0;
             // 
             // id
             // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
+            id.DataPropertyName = "id";
+            id.HeaderText = "id";
+            id.Name = "id";
+            id.ReadOnly = true;
             // 
             // Dni
             // 
-            this.Dni.DataPropertyName = "Dni";
-            this.Dni.HeaderText = "Dni";
-            this.Dni.Name = "Dni";
-            this.Dni.ReadOnly = true;
+            Dni.DataPropertyName = "Dni";
+            Dni.HeaderText = "Dni";
+            Dni.Name = "Dni";
+            Dni.ReadOnly = true;
             // 
             // Nombre
             // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
+            Nombre.DataPropertyName = "Nombre";
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
             // 
             // Direccion
             // 
-            this.Direccion.DataPropertyName = "Direccion";
-            this.Direccion.HeaderText = "Direccion";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
+            Direccion.DataPropertyName = "Direccion";
+            Direccion.HeaderText = "Direccion";
+            Direccion.Name = "Direccion";
+            Direccion.ReadOnly = true;
             // 
             // FechaIngreso
             // 
-            this.FechaIngreso.DataPropertyName = "FechaIngreso";
-            this.FechaIngreso.HeaderText = "FechaIngreso";
-            this.FechaIngreso.Name = "FechaIngreso";
-            this.FechaIngreso.ReadOnly = true;
+            FechaIngreso.DataPropertyName = "FechaIngreso";
+            FechaIngreso.HeaderText = "FechaIngreso";
+            FechaIngreso.Name = "FechaIngreso";
+            FechaIngreso.ReadOnly = true;
             // 
             // Salario
             // 
-            this.Salario.DataPropertyName = "Salario";
-            this.Salario.HeaderText = "Salario";
-            this.Salario.Name = "Salario";
-            this.Salario.ReadOnly = true;
+            Salario.DataPropertyName = "Salario";
+            Salario.HeaderText = "Salario";
+            Salario.Name = "Salario";
+            Salario.ReadOnly = true;
             // 
             // NombreDepartamento
             // 
-            this.NombreDepartamento.DataPropertyName = "NombreDepartamento";
-            this.NombreDepartamento.HeaderText = "NombreDepartamento";
-            this.NombreDepartamento.Name = "NombreDepartamento";
-            this.NombreDepartamento.ReadOnly = true;
+            NombreDepartamento.DataPropertyName = "NombreDepartamento";
+            NombreDepartamento.HeaderText = "NombreDepartamento";
+            NombreDepartamento.Name = "NombreDepartamento";
+            NombreDepartamento.ReadOnly = true;
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBuscar.Location = new System.Drawing.Point(0, 0);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.PlaceholderText = "Buscar";
-            this.txtBuscar.Size = new System.Drawing.Size(837, 23);
-            this.txtBuscar.TabIndex = 2;
-            this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
+            txtBuscar.Dock = DockStyle.Fill;
+            txtBuscar.Location = new Point(0, 0);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.PlaceholderText = "Buscar";
+            txtBuscar.Size = new Size(837, 23);
+            txtBuscar.TabIndex = 2;
+            txtBuscar.KeyPress += txtBuscar_KeyPress;
             // 
             // btnAlta
             // 
-            this.btnAlta.Location = new System.Drawing.Point(3, 47);
-            this.btnAlta.Name = "btnAlta";
-            this.btnAlta.Size = new System.Drawing.Size(99, 38);
-            this.btnAlta.TabIndex = 0;
-            this.btnAlta.Text = "Alta";
-            this.btnAlta.UseVisualStyleBackColor = true;
-            this.btnAlta.Click += new System.EventHandler(this.btnAlta_Click);
+            btnAlta.Location = new Point(3, 47);
+            btnAlta.Name = "btnAlta";
+            btnAlta.Size = new Size(99, 38);
+            btnAlta.TabIndex = 0;
+            btnAlta.Text = "Alta";
+            btnAlta.UseVisualStyleBackColor = true;
+            btnAlta.Click += btnAlta_Click;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btnBuscar);
-            this.flowLayoutPanel1.Controls.Add(this.btnAlta);
-            this.flowLayoutPanel1.Controls.Add(this.btnConsultar);
-            this.flowLayoutPanel1.Controls.Add(this.btnModificar);
-            this.flowLayoutPanel1.Controls.Add(this.btnBaja);
-            this.flowLayoutPanel1.Controls.Add(this.btnCerrar);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(108, 488);
-            this.flowLayoutPanel1.TabIndex = 3;
+            flowLayoutPanel1.Controls.Add(btnBuscar);
+            flowLayoutPanel1.Controls.Add(btnAlta);
+            flowLayoutPanel1.Controls.Add(btnConsultar);
+            flowLayoutPanel1.Controls.Add(btnModificar);
+            flowLayoutPanel1.Controls.Add(btnBaja);
+            flowLayoutPanel1.Controls.Add(btnCerrar);
+            flowLayoutPanel1.Dock = DockStyle.Left;
+            flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(108, 488);
+            flowLayoutPanel1.TabIndex = 3;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(3, 3);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(99, 38);
-            this.btnBuscar.TabIndex = 5;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            btnBuscar.Location = new Point(3, 3);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(99, 38);
+            btnBuscar.TabIndex = 5;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(3, 91);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(99, 38);
-            this.btnConsultar.TabIndex = 3;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            btnConsultar.Location = new Point(3, 91);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(99, 38);
+            btnConsultar.TabIndex = 3;
+            btnConsultar.Text = "Consultar";
+            btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(3, 135);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(99, 38);
-            this.btnModificar.TabIndex = 1;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            btnModificar.Location = new Point(3, 135);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(99, 38);
+            btnModificar.TabIndex = 1;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // btnBaja
             // 
-            this.btnBaja.Location = new System.Drawing.Point(3, 179);
-            this.btnBaja.Name = "btnBaja";
-            this.btnBaja.Size = new System.Drawing.Size(99, 38);
-            this.btnBaja.TabIndex = 2;
-            this.btnBaja.Text = "Baja";
-            this.btnBaja.UseVisualStyleBackColor = true;
+            btnBaja.Location = new Point(3, 179);
+            btnBaja.Name = "btnBaja";
+            btnBaja.Size = new Size(99, 38);
+            btnBaja.TabIndex = 2;
+            btnBaja.Text = "Baja";
+            btnBaja.UseVisualStyleBackColor = true;
+            btnBaja.Click += btnBaja_Click;
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(3, 223);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(99, 38);
-            this.btnCerrar.TabIndex = 4;
-            this.btnCerrar.Text = "Salir";
-            this.btnCerrar.UseVisualStyleBackColor = true;
+            btnCerrar.Location = new Point(3, 223);
+            btnCerrar.Name = "btnCerrar";
+            btnCerrar.Size = new Size(99, 38);
+            btnCerrar.TabIndex = 4;
+            btnCerrar.Text = "Salir";
+            btnCerrar.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtBuscar);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(108, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(837, 28);
-            this.panel1.TabIndex = 4;
+            panel1.Controls.Add(txtBuscar);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(108, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(837, 28);
+            panel1.TabIndex = 4;
             // 
             // FrmAdminEmpleados
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 488);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Name = "FrmAdminEmpleados";
-            this.Text = "Administración de empleados";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(945, 488);
+            Controls.Add(dataGridView1);
+            Controls.Add(panel1);
+            Controls.Add(flowLayoutPanel1);
+            Name = "FrmAdminEmpleados";
+            Text = "Administración de empleados";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)empleadoBindingSource).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

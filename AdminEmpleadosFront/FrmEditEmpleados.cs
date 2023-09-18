@@ -22,6 +22,30 @@ namespace AdminEmpleadosFront
         {
             InitializeComponent();
         }
+
+        private void FrmEditEmpleados_Load(object sender, EventArgs e)
+        {
+            CargarComboDepartamento();
+
+            if (modo == EnumModoForm.Alta)
+            {
+                LimpiarControles();
+                HabilitarControles(true);
+            }
+            if (modo == EnumModoForm.Modificacion)
+            {
+                HabilitarControles(true);
+                CargarDatos();
+            }
+            if (modo == EnumModoForm.Consulta)
+            {
+                HabilitarControles(false);
+                CargarDatos();
+                btnAceptar.Enabled = false;
+            }
+
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Guardar();
@@ -39,6 +63,10 @@ namespace AdminEmpleadosFront
                 emp.Departamento = null;
                 emp.Nombre = txtNombre.Text.Trim();
                 emp.Departamento = new Departamento();
+                
+                //tomo el ID del departamento, el cual esta en el combo
+                emp.Departamento.id = (int)cmbDepartamento.SelectedValue;
+                emp.dpto_id = emp.Departamento.id;
 
                 string mensajeErrores = "";
                 //realizo validaciones. El mensaje va por referencia
@@ -112,27 +140,19 @@ namespace AdminEmpleadosFront
             txtIngreso.Value = DateTime.Now;
             txtNombre.Text = "";
         }
-        private void FrmEditEmpleados_Load(object sender, EventArgs e)
+       
+
+        private void CargarComboDepartamento()
         {
-            if (modo == EnumModoForm.Alta)
-            {
-                LimpiarControles();
-                HabilitarControles(true);
-            }
-            if (modo == EnumModoForm.Modificacion)
-            {
-                HabilitarControles(true);
-                CargarDatos();
-            }
-            if (modo == EnumModoForm.Consulta)
-            {
-                HabilitarControles(false);
-                CargarDatos();
-                btnAceptar.Enabled = false;
-            }
+            //envio por parametro un departamento sin datos, asi va sin filtro y trae todos los dptos
+            Departamento d = new Departamento();            
+            departamentoBindingSource.DataSource = DepartamentosNegocio.Get(d);
+
         }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+        
             Close();
         }
         private void HabilitarControles(bool habilitar)
@@ -154,7 +174,12 @@ namespace AdminEmpleadosFront
             if (_empleado.FechaIngreso != null)
                 txtIngreso.Value = Convert.ToDateTime(_empleado.FechaIngreso);
             txtNombre.Text = _empleado.Nombre;
+                        
+            if (_empleado.Departamento != null)
+                cmbDepartamento.SelectedValue = _empleado.Departamento.id;
+
         }
 
+      
     }
 }

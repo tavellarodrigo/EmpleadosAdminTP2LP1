@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,7 +45,9 @@
             this.txtSalario = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbDepartamento = new System.Windows.Forms.ComboBox();
+            this.departamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtSalario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departamentoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -186,11 +189,19 @@
             // 
             // cmbDepartamento
             // 
+            this.cmbDepartamento.DataSource = this.departamentoBindingSource;
+            this.cmbDepartamento.DisplayMember = "Nombre";
+            this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDepartamento.FormattingEnabled = true;
             this.cmbDepartamento.Location = new System.Drawing.Point(110, 193);
             this.cmbDepartamento.Name = "cmbDepartamento";
             this.cmbDepartamento.Size = new System.Drawing.Size(207, 23);
             this.cmbDepartamento.TabIndex = 15;
+            this.cmbDepartamento.ValueMember = "id";
+            // 
+            // departamentoBindingSource
+            // 
+            this.departamentoBindingSource.DataSource = typeof(AdminEmpleadosEntidades.Departamento);
             // 
             // FrmEditEmpleados
             // 
@@ -219,6 +230,7 @@
             this.Text = "Editar empleados";
             this.Load += new System.EventHandler(this.FrmEditEmpleados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtSalario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departamentoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,5 +254,6 @@
         private NumericUpDown txtSalario;
         private Label label7;
         private ComboBox cmbDepartamento;
+        private BindingSource departamentoBindingSource;
     }
 }

@@ -36,5 +36,6 @@ namespace AdminEmpleadosEntidades
                     return null;
             }
         }
+        public bool? anulado { get; set; }
     }
 }
