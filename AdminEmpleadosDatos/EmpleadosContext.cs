@@ -11,7 +11,7 @@ namespace AdminEmpleadosDatos
         public DbSet<Departamento> departamentos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {         
+        {
             optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["conexionDB"].ConnectionString);
         }
     }

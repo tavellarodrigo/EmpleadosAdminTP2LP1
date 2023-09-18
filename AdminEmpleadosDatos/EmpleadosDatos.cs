@@ -38,13 +38,16 @@ namespace AdminEmpleadosDatos
                         if (reader["fecha_ingreso"].GetType() != typeof(DBNull))
                             emp.FechaIngreso = Convert.ToDateTime(reader["fecha_ingreso"]);
                         if (reader["salario"].GetType() != typeof(DBNull))
-                            emp.Salario = Convert.ToDecimal(reader["salario"]);
+                            emp.Salario = Convert.ToDecimal(reader["salario"]);                        
 
+                        //El SP tambien me devuelve datos del departamento
                         if (reader["nombre_dpto"].GetType() != typeof(DBNull))
                         {
+                            //creo un objeto departamento
                             Departamento dep = new Departamento();
-                            dep.id = 0;
+                            dep.id = Convert.ToInt32(reader["dpto_id"]); ;
                             dep.Nombre = Convert.ToString(reader["nombre_dpto"]);
+                            //asigno el dpto al empleado
                             emp.Departamento = dep;
                         }
 
@@ -57,12 +60,62 @@ namespace AdminEmpleadosDatos
                 {
                     throw ;
                 }
-              
+
             }
 
 
             return list;
         }
-    
+
+        public static int Insert(Empleado e)
+        {
+            int idEmpleadoCreado = 0;
+
+            string conString = System.Configuration.ConfigurationManager.
+                      ConnectionStrings["conexionDB"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(conString))
+            {                
+                SqlCommand command = new SqlCommand("empleadosInsert", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                /*
+                 Parametros del SP
+                    @dni varchar(50) ,n
+	                @nombre_apellido varchar(50),
+	                @direccion varchar(50),
+	                @fecha_ingreso datetime,
+	                @salario numeric(18,2),
+	                @dpto_id int
+                 */
+
+                if (e.Dni != null)
+                    command.Parameters.AddWithValue("@dni", e.Dni);
+                if (e.Nombre != null)
+                    command.Parameters.AddWithValue("@nombre_apellido", e.Nombre);
+                if (e.Direccion != null)
+                    command.Parameters.AddWithValue("@direccion", e.Direccion);
+                if (e.FechaIngreso != null)
+                    command.Parameters.AddWithValue("@fecha_ingreso", e.FechaIngreso);
+                if (e.Salario != null)
+                    command.Parameters.AddWithValue("@salario", e.Salario);
+                if (e.Departamento != null && e.Departamento.id != null)
+                    command.Parameters.AddWithValue("@dpto_id", e.Departamento.id);
+
+                try
+                {
+                    connection.Open();
+                    //Realizo el insert y obtengo el ID generado de la BD
+                    idEmpleadoCreado = Convert.ToInt32(command.ExecuteScalar());
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                return idEmpleadoCreado;
+            }
+        }
     }
 }

@@ -19,35 +19,55 @@ namespace AdminEmpleadosFront
         public FrmAdminEmpleados()
         {
             InitializeComponent();
-
-
-        }
-        private void FrmAdminEmpleados_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             buscarEmpleados();
-
         }
         private void buscarEmpleados()
         {
+            //Obtengo el nombre ingresado por el usuario
+            string nombreBuscar = txtBuscar.Text.Trim().ToUpper();
 
-            Empleado e = new Empleado();
+            //declaro el parametro
+            Empleado parametro = new Empleado();
 
+            //asigno el nombre ingresado
+            if (!String.IsNullOrEmpty(nombreBuscar.Trim()))
+                parametro.Nombre = nombreBuscar;
 
-            empleadosList = EmpleadosNegocio.Get(e);
+            //Busco la lista de empleados en la capa de negocio, pasandole el parametro ingresado
+            empleadosList = EmpleadosNegocio.Get(parametro);
+            //Actualizo la grilla
             refreshGrid();
         }
 
         private void refreshGrid()
         {
-            dataGridView1.DataSource = empleadosList;
-            dataGridView1.Refresh();
+            //Actualizo el Binding con la lista de empleados que viene desde la BD
+            empleadoBindingSource.DataSource = null;
+            empleadoBindingSource.DataSource = empleadosList;
+
         }
 
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Llamo al metodo buscar al presionar la tecla "Enter"
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                buscarEmpleados();
+            }
+        }
 
+        private void btnAlta_Click(object sender, EventArgs e)
+        {
+            FrmEditEmpleados frm = new FrmEditEmpleados();
+
+            frm.modo = EnumModoForm.Alta;
+            frm.ShowDialog();
+
+            buscarEmpleados();
+        }
     }
 }

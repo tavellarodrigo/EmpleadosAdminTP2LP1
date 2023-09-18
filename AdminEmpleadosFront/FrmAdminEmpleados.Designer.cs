@@ -67,7 +67,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(692, 422);
+            dataGridView1.Size = new Size(837, 460);
             dataGridView1.TabIndex = 0;
             // 
             // id
@@ -125,8 +125,9 @@
             txtBuscar.Location = new Point(0, 0);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.PlaceholderText = "Buscar";
-            txtBuscar.Size = new Size(692, 23);
+            txtBuscar.Size = new Size(837, 23);
             txtBuscar.TabIndex = 2;
+            txtBuscar.KeyPress += txtBuscar_KeyPress;
             // 
             // btnAlta
             // 
@@ -136,6 +137,7 @@
             btnAlta.TabIndex = 0;
             btnAlta.Text = "Alta";
             btnAlta.UseVisualStyleBackColor = true;
+            btnAlta.Click += btnAlta_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -148,7 +150,7 @@
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(108, 450);
+            flowLayoutPanel1.Size = new Size(108, 488);
             flowLayoutPanel1.TabIndex = 3;
             // 
             // btnBuscar
@@ -203,20 +205,19 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(108, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(692, 28);
+            panel1.Size = new Size(837, 28);
             panel1.TabIndex = 4;
             // 
             // FrmAdminEmpleados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(945, 488);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
             Controls.Add(flowLayoutPanel1);
             Name = "FrmAdminEmpleados";
             Text = "Administración de empleados";
-            Load += FrmAdminEmpleados_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)empleadoBindingSource).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
