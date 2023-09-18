@@ -66,7 +66,6 @@ namespace AdminEmpleadosDatos
 
             return list;
         }
-
         public static int Insert(Empleado e)
         {
             int idEmpleadoCreado = 0;
@@ -117,5 +116,57 @@ namespace AdminEmpleadosDatos
                 return idEmpleadoCreado;
             }
         }
+        public static bool Update(Empleado e)
+        {
+            string conString = System.Configuration.ConfigurationManager.
+                      ConnectionStrings["conexionDB"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+                SqlCommand command = new SqlCommand("empleadosModificar", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                /*
+                 Parametros del SP
+                    @id int ,n
+                    @dni varchar(50) ,n
+                    @nombre_apellido varchar(50),
+                    @direccion varchar(50),
+                    @fecha_ingreso datetime,
+                    @salario numeric(18,2),
+                    @dpto_id int
+                 */
+
+                if (e.id != null)
+                    command.Parameters.AddWithValue("@id", e.id);
+                if (e.Dni != null)
+                    command.Parameters.AddWithValue("@dni", e.Dni);
+                if (e.Nombre != null)
+                    command.Parameters.AddWithValue("@nombre_apellido", e.Nombre);
+                if (e.Direccion != null)
+                    command.Parameters.AddWithValue("@direccion", e.Direccion);
+                if (e.FechaIngreso != null)
+                    command.Parameters.AddWithValue("@fecha_ingreso", e.FechaIngreso);
+                if (e.Salario != null)
+                    command.Parameters.AddWithValue("@salario", e.Salario);
+                if (e.Departamento != null && e.Departamento.id != null)
+                    command.Parameters.AddWithValue("@dpto_id", e.Departamento.id);
+
+                try
+                {
+                    connection.Open();
+                    //Realizo el update
+                    command.ExecuteNonQuery();
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }                
+            }
+
+            return true;
+        }
+    
     }
 }

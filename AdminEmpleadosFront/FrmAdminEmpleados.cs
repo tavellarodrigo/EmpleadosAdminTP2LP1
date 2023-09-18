@@ -23,7 +23,7 @@ namespace AdminEmpleadosFront
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            buscarEmpleados();
+            buscarEmpleados();           
         }
         private void buscarEmpleados()
         {
@@ -48,7 +48,7 @@ namespace AdminEmpleadosFront
             //Actualizo el Binding con la lista de empleados que viene desde la BD
             empleadoBindingSource.DataSource = null;
             empleadoBindingSource.DataSource = empleadosList;
-
+            
         }
 
         private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
@@ -64,10 +64,47 @@ namespace AdminEmpleadosFront
         {
             FrmEditEmpleados frm = new FrmEditEmpleados();
 
+            //paso por parametro "algo"
             frm.modo = EnumModoForm.Alta;
+
             frm.ShowDialog();
 
             buscarEmpleados();
+        }
+
+        private void CargarDatosEmpleado()
+        {
+
+        }
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            if (empleadoBindingSource.Current == null)
+                return;
+
+            FrmEditEmpleados frm = new FrmEditEmpleados();
+
+            frm.modo = EnumModoForm.Consulta;
+            frm._empleado = (Empleado)empleadoBindingSource.Current;
+
+            frm.ShowDialog();
+
+            buscarEmpleados();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (empleadoBindingSource.Current == null)
+                return;
+
+            FrmEditEmpleados frm = new FrmEditEmpleados();
+            
+            frm.modo = EnumModoForm.Modificacion;
+            frm._empleado = (Empleado)empleadoBindingSource.Current;
+
+            frm.ShowDialog();
+
+            buscarEmpleados();
+            
         }
     }
 }

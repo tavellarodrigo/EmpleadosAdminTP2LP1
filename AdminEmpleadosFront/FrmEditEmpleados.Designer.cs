@@ -28,193 +28,200 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnAceptar = new Button();
-            btnCerrar = new Button();
-            label1 = new Label();
-            txtId = new TextBox();
-            txtNombre = new TextBox();
-            label2 = new Label();
-            label3 = new Label();
-            txtDni = new TextBox();
-            txtDireccion = new TextBox();
-            label4 = new Label();
-            label5 = new Label();
-            txtIngreso = new DateTimePicker();
-            label6 = new Label();
-            txtSalario = new NumericUpDown();
-            label7 = new Label();
-            cmbDepartamento = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)txtSalario).BeginInit();
-            SuspendLayout();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDni = new System.Windows.Forms.TextBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtIngreso = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSalario = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbDepartamento = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSalario)).BeginInit();
+            this.SuspendLayout();
             // 
             // btnAceptar
             // 
-            btnAceptar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnAceptar.Location = new Point(161, 234);
-            btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(75, 23);
-            btnAceptar.TabIndex = 0;
-            btnAceptar.Text = "Aceptar";
-            btnAceptar.UseVisualStyleBackColor = true;
-            btnAceptar.Click += btnAceptar_Click;
+            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAceptar.Location = new System.Drawing.Point(161, 234);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 0;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCerrar
             // 
-            btnCerrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCerrar.Location = new Point(242, 234);
-            btnCerrar.Name = "btnCerrar";
-            btnCerrar.Size = new Size(75, 23);
-            btnCerrar.TabIndex = 1;
-            btnCerrar.Text = "Cerrar";
-            btnCerrar.UseVisualStyleBackColor = true;
-            btnCerrar.Click += btnCerrar_Click;
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.Location = new System.Drawing.Point(242, 234);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.TabIndex = 1;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(21, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(17, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Id";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Id";
             // 
             // txtId
             // 
-            txtId.Location = new Point(110, 16);
-            txtId.Name = "txtId";
-            txtId.ReadOnly = true;
-            txtId.Size = new Size(54, 23);
-            txtId.TabIndex = 3;
+            this.txtId.Location = new System.Drawing.Point(110, 16);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(54, 23);
+            this.txtId.TabIndex = 3;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(110, 74);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(207, 23);
-            txtNombre.TabIndex = 5;
+            this.txtNombre.Location = new System.Drawing.Point(110, 74);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(207, 23);
+            this.txtNombre.TabIndex = 5;
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(21, 77);
-            label2.Name = "label2";
-            label2.Size = new Size(51, 15);
-            label2.TabIndex = 4;
-            label2.Text = "Nombre";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 15);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Nombre";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(21, 48);
-            label3.Name = "label3";
-            label3.Size = new Size(27, 15);
-            label3.TabIndex = 6;
-            label3.Text = "DNI";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(21, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 15);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "DNI";
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(110, 45);
-            txtDni.Name = "txtDni";
-            txtDni.Size = new Size(207, 23);
-            txtDni.TabIndex = 7;
+            this.txtDni.Location = new System.Drawing.Point(110, 45);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(207, 23);
+            this.txtDni.TabIndex = 7;
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(110, 103);
-            txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(207, 23);
-            txtDireccion.TabIndex = 9;
+            this.txtDireccion.Location = new System.Drawing.Point(110, 103);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(207, 23);
+            this.txtDireccion.TabIndex = 9;
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(21, 106);
-            label4.Name = "label4";
-            label4.Size = new Size(57, 15);
-            label4.TabIndex = 8;
-            label4.Text = "Dirección";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 106);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Dirección";
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(21, 140);
-            label5.Name = "label5";
-            label5.Size = new Size(46, 15);
-            label5.TabIndex = 10;
-            label5.Text = "Ingreso";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 140);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 15);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Ingreso";
             // 
             // txtIngreso
             // 
-            txtIngreso.CustomFormat = "dd/MM/yyyy";
-            txtIngreso.Format = DateTimePickerFormat.Custom;
-            txtIngreso.Location = new Point(110, 134);
-            txtIngreso.Name = "txtIngreso";
-            txtIngreso.Size = new Size(84, 23);
-            txtIngreso.TabIndex = 11;
+            this.txtIngreso.Checked = false;
+            this.txtIngreso.CustomFormat = "dd/MM/yyyy";
+            this.txtIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txtIngreso.Location = new System.Drawing.Point(110, 134);
+            this.txtIngreso.Name = "txtIngreso";
+            this.txtIngreso.Size = new System.Drawing.Size(102, 23);
+            this.txtIngreso.TabIndex = 11;
             // 
             // label6
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(21, 166);
-            label6.Name = "label6";
-            label6.Size = new Size(42, 15);
-            label6.TabIndex = 12;
-            label6.Text = "Salario";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(21, 166);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 15);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Salario";
             // 
             // txtSalario
             // 
-            txtSalario.DecimalPlaces = 2;
-            txtSalario.Location = new Point(110, 164);
-            txtSalario.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
-            txtSalario.Name = "txtSalario";
-            txtSalario.Size = new Size(102, 23);
-            txtSalario.TabIndex = 13;
+            this.txtSalario.DecimalPlaces = 2;
+            this.txtSalario.Location = new System.Drawing.Point(110, 164);
+            this.txtSalario.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.txtSalario.Name = "txtSalario";
+            this.txtSalario.Size = new System.Drawing.Size(102, 23);
+            this.txtSalario.TabIndex = 13;
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(21, 196);
-            label7.Name = "label7";
-            label7.Size = new Size(83, 15);
-            label7.TabIndex = 14;
-            label7.Text = "Departamento";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(21, 196);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 15);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Departamento";
             // 
             // cmbDepartamento
             // 
-            cmbDepartamento.FormattingEnabled = true;
-            cmbDepartamento.Location = new Point(110, 193);
-            cmbDepartamento.Name = "cmbDepartamento";
-            cmbDepartamento.Size = new Size(207, 23);
-            cmbDepartamento.TabIndex = 15;
+            this.cmbDepartamento.FormattingEnabled = true;
+            this.cmbDepartamento.Location = new System.Drawing.Point(110, 193);
+            this.cmbDepartamento.Name = "cmbDepartamento";
+            this.cmbDepartamento.Size = new System.Drawing.Size(207, 23);
+            this.cmbDepartamento.TabIndex = 15;
             // 
             // FrmEditEmpleados
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(329, 269);
-            Controls.Add(cmbDepartamento);
-            Controls.Add(label7);
-            Controls.Add(txtSalario);
-            Controls.Add(label6);
-            Controls.Add(txtIngreso);
-            Controls.Add(label5);
-            Controls.Add(txtDireccion);
-            Controls.Add(label4);
-            Controls.Add(txtDni);
-            Controls.Add(label3);
-            Controls.Add(txtNombre);
-            Controls.Add(label2);
-            Controls.Add(txtId);
-            Controls.Add(label1);
-            Controls.Add(btnCerrar);
-            Controls.Add(btnAceptar);
-            Name = "FrmEditEmpleados";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Editar empleados";
-            Load += FrmEditEmpleados_Load;
-            ((System.ComponentModel.ISupportInitialize)txtSalario).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(329, 269);
+            this.Controls.Add(this.cmbDepartamento);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtSalario);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtIngreso);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtDireccion);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtDni);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.btnAceptar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "FrmEditEmpleados";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Editar empleados";
+            this.Load += new System.EventHandler(this.FrmEditEmpleados_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.txtSalario)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

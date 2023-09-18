@@ -1,16 +1,12 @@
 ﻿using AdminEmpleadosEntidades;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdminEmpleadosDatos
 {
     public class EmpleadosDatosEF
     {        
         static EmpleadosContext? empleadosContext;
+
 
         public static List<Empleado> Get(Empleado e)
         {
@@ -38,6 +34,26 @@ namespace AdminEmpleadosDatos
 
             return (int)e.id;
 
+        }
+
+        public static bool Update(Empleado e)
+        {
+            empleadosContext = new EmpleadosContext();
+
+            var empleadoBD = empleadosContext.empleados.FirstOrDefault(c=>c.id ==  e.id);
+            if (empleadoBD== null)
+                return false;
+
+            empleadoBD.Direccion = e.Direccion;
+            empleadoBD.Dni = e.Dni;
+            empleadoBD.Salario = e.Salario;
+            empleadoBD.FechaIngreso = e.FechaIngreso;
+            empleadoBD.Nombre = e.Nombre;            
+            empleadoBD.dpto_id = e.dpto_id;
+
+            empleadosContext.SaveChanges();
+
+            return true;
         }
     }
 }
