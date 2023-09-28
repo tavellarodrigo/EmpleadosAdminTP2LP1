@@ -14,4 +14,5 @@ namespace AdminEmpleadosFront
             Application.Run(new FrmAdminEmpleados());
         }
     }
+        
 }
