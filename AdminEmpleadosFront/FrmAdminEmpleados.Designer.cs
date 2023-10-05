@@ -30,21 +30,13 @@
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
-            EmpleadoId = new DataGridViewTextBoxColumn();
+            id = new DataGridViewTextBoxColumn();
             Dni = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Direccion = new DataGridViewTextBoxColumn();
             FechaIngreso = new DataGridViewTextBoxColumn();
             Salario = new DataGridViewTextBoxColumn();
             NombreDepartamento = new DataGridViewTextBoxColumn();
-            empleadoIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dniDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            direccionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaIngresoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            salarioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dptoidDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            departamentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             empleadoBindingSource = new BindingSource(components);
             txtBuscar = new TextBox();
             btnAlta = new Button();
@@ -68,22 +60,22 @@
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { EmpleadoId, Dni, Nombre, Direccion, FechaIngreso, Salario, NombreDepartamento, empleadoIdDataGridViewTextBoxColumn, dniDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, direccionDataGridViewTextBoxColumn, fechaIngresoDataGridViewTextBoxColumn, salarioDataGridViewTextBoxColumn, dptoidDataGridViewTextBoxColumn, departamentoDataGridViewTextBoxColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id, Dni, Nombre, Direccion, FechaIngreso, Salario, NombreDepartamento });
             dataGridView1.DataSource = empleadoBindingSource;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(108, 28);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(692, 422);
+            dataGridView1.Size = new Size(837, 460);
             dataGridView1.TabIndex = 0;
             // 
-            // EmpleadoId
+            // id
             // 
-            EmpleadoId.DataPropertyName = "EmpleadoId";
-            EmpleadoId.HeaderText = "id";
-            EmpleadoId.Name = "EmpleadoId";
-            EmpleadoId.ReadOnly = true;
+            id.DataPropertyName = "EmpleadoId";
+            id.HeaderText = "id";
+            id.Name = "id";
+            id.ReadOnly = true;
             // 
             // Dni
             // 
@@ -127,74 +119,15 @@
             NombreDepartamento.Name = "NombreDepartamento";
             NombreDepartamento.ReadOnly = true;
             // 
-            // empleadoIdDataGridViewTextBoxColumn
-            // 
-            empleadoIdDataGridViewTextBoxColumn.DataPropertyName = "EmpleadoId";
-            empleadoIdDataGridViewTextBoxColumn.HeaderText = "EmpleadoId";
-            empleadoIdDataGridViewTextBoxColumn.Name = "empleadoIdDataGridViewTextBoxColumn";
-            empleadoIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dniDataGridViewTextBoxColumn
-            // 
-            dniDataGridViewTextBoxColumn.DataPropertyName = "Dni";
-            dniDataGridViewTextBoxColumn.HeaderText = "Dni";
-            dniDataGridViewTextBoxColumn.Name = "dniDataGridViewTextBoxColumn";
-            dniDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // direccionDataGridViewTextBoxColumn
-            // 
-            direccionDataGridViewTextBoxColumn.DataPropertyName = "Direccion";
-            direccionDataGridViewTextBoxColumn.HeaderText = "Direccion";
-            direccionDataGridViewTextBoxColumn.Name = "direccionDataGridViewTextBoxColumn";
-            direccionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaIngresoDataGridViewTextBoxColumn
-            // 
-            fechaIngresoDataGridViewTextBoxColumn.DataPropertyName = "FechaIngreso";
-            fechaIngresoDataGridViewTextBoxColumn.HeaderText = "FechaIngreso";
-            fechaIngresoDataGridViewTextBoxColumn.Name = "fechaIngresoDataGridViewTextBoxColumn";
-            fechaIngresoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // salarioDataGridViewTextBoxColumn
-            // 
-            salarioDataGridViewTextBoxColumn.DataPropertyName = "Salario";
-            salarioDataGridViewTextBoxColumn.HeaderText = "Salario";
-            salarioDataGridViewTextBoxColumn.Name = "salarioDataGridViewTextBoxColumn";
-            salarioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dptoidDataGridViewTextBoxColumn
-            // 
-            dptoidDataGridViewTextBoxColumn.DataPropertyName = "dpto_id";
-            dptoidDataGridViewTextBoxColumn.HeaderText = "dpto_id";
-            dptoidDataGridViewTextBoxColumn.Name = "dptoidDataGridViewTextBoxColumn";
-            dptoidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // departamentoDataGridViewTextBoxColumn
-            // 
-            departamentoDataGridViewTextBoxColumn.DataPropertyName = "Departamento";
-            departamentoDataGridViewTextBoxColumn.HeaderText = "Departamento";
-            departamentoDataGridViewTextBoxColumn.Name = "departamentoDataGridViewTextBoxColumn";
-            departamentoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // empleadoBindingSource
-            // 
-            empleadoBindingSource.DataSource = typeof(AdminEmpleadosEntidades.Empleado);
-            // 
             // txtBuscar
             // 
             txtBuscar.Dock = DockStyle.Fill;
             txtBuscar.Location = new Point(0, 0);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.PlaceholderText = "Buscar";
-            txtBuscar.Size = new Size(692, 23);
+            txtBuscar.Size = new Size(837, 23);
             txtBuscar.TabIndex = 2;
+            txtBuscar.KeyPress += txtBuscar_KeyPress;
             // 
             // btnAlta
             // 
@@ -204,6 +137,7 @@
             btnAlta.TabIndex = 0;
             btnAlta.Text = "Alta";
             btnAlta.UseVisualStyleBackColor = true;
+            btnAlta.Click += btnAlta_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -216,7 +150,7 @@
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(108, 450);
+            flowLayoutPanel1.Size = new Size(108, 488);
             flowLayoutPanel1.TabIndex = 3;
             // 
             // btnBuscar
@@ -271,20 +205,19 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(108, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(692, 28);
+            panel1.Size = new Size(837, 28);
             panel1.TabIndex = 4;
             // 
             // FrmAdminEmpleados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(945, 488);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
             Controls.Add(flowLayoutPanel1);
             Name = "FrmAdminEmpleados";
             Text = "Administración de empleados";
-            Load += FrmAdminEmpleados_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)empleadoBindingSource).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
@@ -305,20 +238,12 @@
         private Button btnCerrar;
         private Panel panel1;
         private Button btnBuscar;
-        private DataGridViewTextBoxColumn EmpleadoId;
+        private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn Dni;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Direccion;
         private DataGridViewTextBoxColumn FechaIngreso;
         private DataGridViewTextBoxColumn Salario;
         private DataGridViewTextBoxColumn NombreDepartamento;
-        private DataGridViewTextBoxColumn empleadoIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn dniDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn direccionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fechaIngresoDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn salarioDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn dptoidDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn departamentoDataGridViewTextBoxColumn;
     }
 }

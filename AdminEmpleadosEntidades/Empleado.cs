@@ -45,8 +45,6 @@ namespace AdminEmpleadosEntidades
                 else
                     return null;
             }
-        }
-
-        //public int? ciudad { get; set; }
+        }        
     }
 }
