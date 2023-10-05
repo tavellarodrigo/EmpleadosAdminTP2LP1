@@ -1,7 +1,6 @@
 ﻿using AdminEmpleadosEF;
 using AdminEmpleadosEntidades;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace AdminEmpleadosDatos
 {
