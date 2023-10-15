@@ -19,7 +19,7 @@ namespace AdminEmpleadosDatos
             //Lazy Loading
             //List<Empleado> list = empleadosContext.empleado.ToList(); //sin departamentos
 
-            List<Empleado> list = empleadosContext.empleado.Include("Departamento").ToList();            
+            List<Empleado> list = empleadosContext.empleado.Include("Departamento").ToList();
 
             return list;
         }
@@ -28,7 +28,7 @@ namespace AdminEmpleadosDatos
         {
             empleadosContext = new AdminEmpleadosDBContext();
 
-            if (empleadosContext.empleado == null)
+            if (empleadosContext == null)
             {
                 return 0;
             }

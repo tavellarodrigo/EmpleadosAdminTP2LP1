@@ -65,7 +65,7 @@ namespace AdminEmpleadosFront
             FrmEditEmpleados frm = new FrmEditEmpleados();
 
             frm.modo = EnumModoForm.Alta;
-            frm.ShowDialog();
+            frm.ShowDialog();//modal
 
             buscarEmpleados();
         }
