@@ -171,6 +171,7 @@
             btnConsultar.TabIndex = 3;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // btnModificar
             // 
@@ -180,6 +181,7 @@
             btnModificar.TabIndex = 1;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // btnBaja
             // 

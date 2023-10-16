@@ -35,5 +35,30 @@ namespace AdminEmpleadosNegocio
             }
 
         }
+
+        public static bool Update(Empleado e)
+        {
+            if (String.IsNullOrEmpty(e.Nombre))
+            {
+                return false;
+            }
+            if (String.IsNullOrEmpty(e.Dni))
+            {
+                return false;
+            }
+            if (e.FechaIngreso == null)
+            {
+                e.FechaIngreso = DateTime.Now;
+            }
+
+            try
+            {
+                return EmpleadosDatosEF.Update(e);             
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

@@ -1,13 +1,4 @@
 ﻿using AdminEmpleadosEntidades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using AdminEmpleadosNegocio;
 
 namespace AdminEmpleadosFront
@@ -27,15 +18,18 @@ namespace AdminEmpleadosFront
         }
         private void buscarEmpleados()
         {
-            //Obtengo el nombre ingresado por el usuario
-            string nombreBuscar = txtBuscar.Text.Trim().ToUpper();
+            //Obtengo el nombre y DNI ingresado por el usuario
+            string textoBuscar = txtBuscar.Text.Trim().ToUpper();            
 
             //declaro el parametro
             Empleado parametro = new Empleado();
 
             //asigno el nombre ingresado
-            if (!String.IsNullOrEmpty(nombreBuscar.Trim()))
-                parametro.Nombre = nombreBuscar;
+            if (!String.IsNullOrEmpty(textoBuscar.Trim()))
+            {
+                parametro.Nombre = textoBuscar;
+                parametro.Dni = textoBuscar;
+            }        
 
             //Busco la lista de empleados en la capa de negocio, pasandole el parametro ingresado
             empleadosList = EmpleadosNegocio.Get(parametro);
@@ -66,6 +60,36 @@ namespace AdminEmpleadosFront
 
             frm.modo = EnumModoForm.Alta;
             frm.ShowDialog();//modal
+
+            buscarEmpleados();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (empleadoBindingSource.Current == null)
+                return;
+
+            FrmEditEmpleados frm = new FrmEditEmpleados();
+
+            frm.modo = EnumModoForm.Modificacion;
+            frm._empleado = (Empleado)empleadoBindingSource.Current;
+
+            frm.ShowDialog();
+
+            buscarEmpleados();
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            if (empleadoBindingSource.Current == null)
+                return;
+
+            FrmEditEmpleados frm = new FrmEditEmpleados();
+
+            frm.modo = EnumModoForm.Consulta;
+            frm._empleado = (Empleado)empleadoBindingSource.Current;
+
+            frm.ShowDialog();
 
             buscarEmpleados();
         }
