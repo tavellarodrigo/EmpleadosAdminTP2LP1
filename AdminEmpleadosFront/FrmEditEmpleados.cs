@@ -1,6 +1,7 @@
 ﻿using AdminEmpleadosEntidades;
 using AdminEmpleadosNegocio;
 
+
 namespace AdminEmpleadosFront
 {
     public partial class FrmEditEmpleados : Form
@@ -12,6 +13,28 @@ namespace AdminEmpleadosFront
         public FrmEditEmpleados()
         {
             InitializeComponent();
+        }
+
+        private void FrmEditEmpleados_Load(object sender, EventArgs e)
+        {
+            CargarComboDepartamento();
+
+            if (modo == EnumModoForm.Alta)
+            {
+                LimpiarControles();
+                HabilitarControles(true);
+            }
+            if (modo == EnumModoForm.Modificacion)
+            {
+                HabilitarControles(true);
+                CargarDatos();
+            }
+            if (modo == EnumModoForm.Consulta)
+            {
+                HabilitarControles(false);
+                CargarDatos();
+                btnAceptar.Enabled = false;
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -33,6 +56,9 @@ namespace AdminEmpleadosFront
                 emp.Departamento = null;
                 emp.Nombre = txtNombre.Text.Trim();
 
+                //tomo el ID del departamento, el cual esta en el combo
+                emp.dpto_id = (int)cmbDepartamento.SelectedValue;
+
                 string mensajeErrores = "";
                 //realizo validaciones. El mensaje va por referencia
                 if (!ValidarEmpleado(ref mensajeErrores, emp))
@@ -50,7 +76,7 @@ namespace AdminEmpleadosFront
                 {
                     return;
                 }
-                
+
                 //Guardo los datos
                 if (modo == EnumModoForm.Alta)
                 {
@@ -62,14 +88,14 @@ namespace AdminEmpleadosFront
                 if (modo == EnumModoForm.Modificacion)
                 {
                     emp.EmpleadoId = Convert.ToInt32(txtId.Text);
-                    
+
                     EmpleadosNegocio.Update(emp);
                     MessageBox.Show("Se actualizaron los datos correctamente", "Empleado actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Close();                    
+                    Close();
 
                 }
 
-                
+
 
                 LimpiarControles();
 
@@ -114,25 +140,7 @@ namespace AdminEmpleadosFront
             txtNombre.Text = "";
         }
 
-        private void FrmEditEmpleados_Load(object sender, EventArgs e)
-        {
-            if (modo == EnumModoForm.Alta)
-            {
-                LimpiarControles();
-                HabilitarControles(true);
-            }
-            if (modo == EnumModoForm.Modificacion)
-            {
-                HabilitarControles(true);
-                CargarDatos();
-            }
-            if (modo == EnumModoForm.Consulta)
-            {
-                HabilitarControles(false);
-                CargarDatos();
-                btnAceptar.Enabled = false;
-            }
-        }
+
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -159,6 +167,19 @@ namespace AdminEmpleadosFront
             if (_empleado.FechaIngreso != null)
                 txtIngreso.Value = Convert.ToDateTime(_empleado.FechaIngreso);
             txtNombre.Text = _empleado.Nombre;
+
+            if (_empleado.Departamento != null)
+                cmbDepartamento.SelectedValue = _empleado.dpto_id;
+
+            // tambien podria ser....             
+            // cmbDepartamento.SelectedValue = _empleado.Departamento.id;
+
+        }
+
+        private void CargarComboDepartamento()
+        {
+            //envio por parametro un departamento sin datos, asi va sin filtro y trae todos los dptos            
+            departamentoBindingSource.DataSource = DepartamentosNegocio.Get();
         }
 
     }

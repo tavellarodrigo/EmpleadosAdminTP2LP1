@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnAceptar = new Button();
             btnCerrar = new Button();
             label1 = new Label();
@@ -44,7 +45,9 @@
             txtSalario = new NumericUpDown();
             label7 = new Label();
             cmbDepartamento = new ComboBox();
+            departamentoBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)txtSalario).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)departamentoBindingSource).BeginInit();
             SuspendLayout();
             // 
             // btnAceptar
@@ -181,11 +184,19 @@
             // 
             // cmbDepartamento
             // 
+            cmbDepartamento.DataSource = departamentoBindingSource;
+            cmbDepartamento.DisplayMember = "Nombre";
+            cmbDepartamento.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDepartamento.FormattingEnabled = true;
             cmbDepartamento.Location = new Point(110, 193);
             cmbDepartamento.Name = "cmbDepartamento";
             cmbDepartamento.Size = new Size(207, 23);
             cmbDepartamento.TabIndex = 15;
+            cmbDepartamento.ValueMember = "DepartamentoId";
+            // 
+            // departamentoBindingSource
+            // 
+            departamentoBindingSource.DataSource = typeof(AdminEmpleadosEntidades.Departamento);
             // 
             // FrmEditEmpleados
             // 
@@ -213,6 +224,7 @@
             Text = "Editar empleados";
             Load += FrmEditEmpleados_Load;
             ((System.ComponentModel.ISupportInitialize)txtSalario).EndInit();
+            ((System.ComponentModel.ISupportInitialize)departamentoBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -235,5 +247,6 @@
         private NumericUpDown txtSalario;
         private Label label7;
         private ComboBox cmbDepartamento;
+        private BindingSource departamentoBindingSource;
     }
 }

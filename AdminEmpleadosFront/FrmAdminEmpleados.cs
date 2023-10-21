@@ -19,7 +19,7 @@ namespace AdminEmpleadosFront
         private void buscarEmpleados()
         {
             //Obtengo el nombre y DNI ingresado por el usuario
-            string textoBuscar = txtBuscar.Text.Trim().ToUpper();            
+            string textoBuscar = txtBuscar.Text.Trim().ToUpper();
 
             //declaro el parametro
             Empleado parametro = new Empleado();
@@ -29,7 +29,7 @@ namespace AdminEmpleadosFront
             {
                 parametro.Nombre = textoBuscar;
                 parametro.Dni = textoBuscar;
-            }        
+            }
 
             //Busco la lista de empleados en la capa de negocio, pasandole el parametro ingresado
             empleadosList = EmpleadosNegocio.Get(parametro);
@@ -90,6 +90,34 @@ namespace AdminEmpleadosFront
             frm._empleado = (Empleado)empleadoBindingSource.Current;
 
             frm.ShowDialog();
+
+            buscarEmpleados();
+        }
+
+        private void btnBaja_Click(object sender, EventArgs e)
+        {
+            if (empleadoBindingSource.Current == null)
+                return;
+
+            Empleado emp = (Empleado)empleadoBindingSource.Current;
+
+            //pregunto si quiere guardar los datos
+            DialogResult res = MessageBox.Show("¿Confirma anular el empleado " + emp.Nombre + " ?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.No)
+            {
+                return;
+            }           
+
+            try
+            {
+                EmpleadosNegocio.Anular((int)emp.EmpleadoId);
+                MessageBox.Show("El empleado " + emp.Nombre + " se anuló correctamente", "Anulación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
 
             buscarEmpleados();
         }

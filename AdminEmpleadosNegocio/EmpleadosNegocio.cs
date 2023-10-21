@@ -55,10 +55,23 @@ namespace AdminEmpleadosNegocio
             {
                 return EmpleadosDatosEF.Update(e);             
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
+        }
+
+        public static bool Anular(int id)
+        {
+            try
+            {
+                return EmpleadosDatosEF.Anular(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+ 
         }
     }
 }

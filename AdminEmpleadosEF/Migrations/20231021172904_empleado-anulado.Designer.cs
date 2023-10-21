@@ -4,6 +4,7 @@ using AdminEmpleadosEF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdminEmpleadosEF.Migrations
 {
     [DbContext(typeof(AdminEmpleadosDBContext))]
-    partial class AdminEmpleadosDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231021172904_empleado-anulado")]
+    partial class empleadoanulado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -23,7 +23,7 @@ namespace AdminEmpleadosDatos
             List<Empleado> list;
             if (String.IsNullOrWhiteSpace(e.Nombre) && String.IsNullOrWhiteSpace(e.Dni))
             {
-                list = empleadosContext.empleado.Include("Departamento").ToList();
+                list = empleadosContext.empleado.Include("Departamento").Where(e=>e.anulado == false).ToList();
             }
             else
             {
@@ -38,18 +38,12 @@ namespace AdminEmpleadosDatos
                 */
 
                 //? operador ternario (es como un IF-ELSE) 
-                //?? operador de fusion de null (Asigna un valor cuando es NULL la variable de la izquierda)
-                list = empleadosContext.empleado.Include("Departamento").Where(i => 
-                    (i.Nombre != null?i.Nombre.Contains(e.Nombre??""):true)
-                    ||
-                    (i.Dni != null ? i.Dni.Contains(e.Dni ?? "") : true)
-                    ).ToList();
-
+                //?? operador de fusion de null (Asigna un valor cuando es NULL la variable de la izquierda)                
                 list = empleadosContext.empleado.Include("Departamento").Where(i =>
                     (i.Nombre != null ? i.Nombre.Contains(e.Nombre ?? "") : true)
                     ||
                     (i.Dni != null ? i.Dni.Contains(e.Dni ?? "") : true)
-                    ).ToList();
+                    ).Where(e=>e.anulado == false).ToList();
             }
             
 
@@ -65,7 +59,8 @@ namespace AdminEmpleadosDatos
                 return 0;
             }
             //seteo el ID en null para que realice el insert porque si tiene otro valor EF lo toma como un update
-            e.EmpleadoId = null;            
+            e.EmpleadoId = null;
+            e.anulado = false;
             empleadosContext.Add(e);
             empleadosContext.SaveChanges();
             if (e.EmpleadoId == null)
@@ -89,6 +84,22 @@ namespace AdminEmpleadosDatos
             empleadoBD.FechaIngreso = e.FechaIngreso;
             empleadoBD.Nombre = e.Nombre;
             empleadoBD.dpto_id = e.dpto_id;
+            empleadoBD.anulado = false;
+
+            empleadosContext.SaveChanges();
+
+            return true;
+        }
+
+        public static bool Anular(int id)
+        {
+            empleadosContext = new AdminEmpleadosDBContext();
+
+            var empleadoBD = empleadosContext.empleado.FirstOrDefault(c => c.EmpleadoId == id);
+            if (empleadoBD == null)
+                return false;
+
+            empleadoBD.anulado = true;
 
             empleadosContext.SaveChanges();
 
