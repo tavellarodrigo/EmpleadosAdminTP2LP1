@@ -30,6 +30,8 @@ namespace AdminEmpleadosFront
                 parametro.Nombre = textoBuscar;
                 parametro.Dni = textoBuscar;
             }
+          
+            parametro.anulado = chkAnulados.Checked;       
 
             //Busco la lista de empleados en la capa de negocio, pasandole el parametro ingresado
             empleadosList = EmpleadosNegocio.Get(parametro);
@@ -106,7 +108,7 @@ namespace AdminEmpleadosFront
             if (res == DialogResult.No)
             {
                 return;
-            }           
+            }
 
             try
             {
@@ -119,6 +121,44 @@ namespace AdminEmpleadosFront
 
             }
 
+            buscarEmpleados();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+            //pregunto si quiere guardar los datos
+            DialogResult res = MessageBox.Show("¿Desea quitar de la BD todos los empleados anulados?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.No)
+            {
+                return;
+            }
+
+            res = MessageBox.Show("¿Confirma quitar los empleados anulados definitivamente?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.No)
+            {
+                return;
+            }
+
+
+
+
+            try
+            {
+                EmpleadosNegocio.DeleteAnulados();
+                MessageBox.Show("Los empleados se borraron correctamente", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            buscarEmpleados();
+        }
+
+        private void chkAnulados_CheckedChanged(object sender, EventArgs e)
+        {
             buscarEmpleados();
         }
     }

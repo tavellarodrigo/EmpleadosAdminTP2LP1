@@ -73,5 +73,18 @@ namespace AdminEmpleadosNegocio
             }
  
         }
+
+        public static bool DeleteAnulados()
+        {
+            try
+            {
+                return EmpleadosDatosEF.DeleteAnulados();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace AdminEmpleadosDatos
             List<Empleado> list;
             if (String.IsNullOrWhiteSpace(e.Nombre) && String.IsNullOrWhiteSpace(e.Dni))
             {
-                list = empleadosContext.empleado.Include("Departamento").Where(e=>e.anulado == false).ToList();
+                list = empleadosContext.empleado.Include("Departamento").Where(i=>i.anulado == e.anulado).ToList();
             }
             else
             {
@@ -43,8 +43,9 @@ namespace AdminEmpleadosDatos
                     (i.Nombre != null ? i.Nombre.Contains(e.Nombre ?? "") : true)
                     ||
                     (i.Dni != null ? i.Dni.Contains(e.Dni ?? "") : true)
-                    ).Where(e=>e.anulado == false).ToList();
+                    ).Where(i=>i.anulado == e.anulado).ToList();
             }
+            
             
 
             return list;
@@ -101,6 +102,22 @@ namespace AdminEmpleadosDatos
 
             empleadoBD.anulado = true;
 
+            empleadosContext.SaveChanges();
+
+            return true;
+        }
+
+        public static bool DeleteAnulados()
+        {
+            empleadosContext = new AdminEmpleadosDBContext();
+
+
+            var listaParaDeletear  = empleadosContext.empleado.Where(c => c.anulado).ToList();
+
+            if (listaParaDeletear.Count() == 0)
+                return true;
+
+            empleadosContext.empleado.RemoveRange(listaParaDeletear);
             empleadosContext.SaveChanges();
 
             return true;

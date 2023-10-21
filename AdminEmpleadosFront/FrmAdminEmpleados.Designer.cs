@@ -46,6 +46,8 @@
             btnModificar = new Button();
             btnBaja = new Button();
             btnCerrar = new Button();
+            btnDelete = new Button();
+            chkAnulados = new CheckBox();
             panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)empleadoBindingSource).BeginInit();
@@ -147,6 +149,8 @@
             flowLayoutPanel1.Controls.Add(btnModificar);
             flowLayoutPanel1.Controls.Add(btnBaja);
             flowLayoutPanel1.Controls.Add(btnCerrar);
+            flowLayoutPanel1.Controls.Add(btnDelete);
+            flowLayoutPanel1.Controls.Add(chkAnulados);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -202,6 +206,27 @@
             btnCerrar.Text = "Salir";
             btnCerrar.UseVisualStyleBackColor = true;
             // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(3, 267);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(99, 38);
+            btnDelete.TabIndex = 6;
+            btnDelete.Text = "Borrar anulados";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // chkAnulados
+            // 
+            chkAnulados.AutoSize = true;
+            chkAnulados.Location = new Point(3, 311);
+            chkAnulados.Name = "chkAnulados";
+            chkAnulados.Size = new Size(93, 19);
+            chkAnulados.TabIndex = 7;
+            chkAnulados.Text = "Ver anulados";
+            chkAnulados.UseVisualStyleBackColor = true;
+            chkAnulados.CheckedChanged += chkAnulados_CheckedChanged;
+            // 
             // panel1
             // 
             panel1.Controls.Add(txtBuscar);
@@ -224,6 +249,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)empleadoBindingSource).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -248,5 +274,7 @@
         private DataGridViewTextBoxColumn FechaIngreso;
         private DataGridViewTextBoxColumn Salario;
         private DataGridViewTextBoxColumn NombreDepartamento;
+        private Button btnDelete;
+        private CheckBox chkAnulados;
     }
 }
