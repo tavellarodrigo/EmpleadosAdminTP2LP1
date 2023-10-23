@@ -55,6 +55,7 @@ namespace AdminEmpleadosFront
                 emp.FechaIngreso = txtIngreso.Value;
                 emp.Departamento = null;
                 emp.Nombre = txtNombre.Text.Trim();
+                emp.anulado = false;
 
                 //tomo el ID del departamento, el cual esta en el combo
                 emp.dpto_id = (int)cmbDepartamento.SelectedValue;
@@ -168,7 +169,7 @@ namespace AdminEmpleadosFront
                 txtIngreso.Value = Convert.ToDateTime(_empleado.FechaIngreso);
             txtNombre.Text = _empleado.Nombre;
 
-            if (_empleado.Departamento != null)
+            if (_empleado.dpto_id != null)
                 cmbDepartamento.SelectedValue = _empleado.dpto_id;
 
             // tambien podria ser....             

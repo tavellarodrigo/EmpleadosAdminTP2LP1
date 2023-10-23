@@ -84,7 +84,7 @@ namespace AdminEmpleadosDatos
             empleadoBD.FechaIngreso = e.FechaIngreso;
             empleadoBD.Nombre = e.Nombre;
             empleadoBD.dpto_id = e.dpto_id;
-            empleadoBD.anulado = false;
+            empleadoBD.anulado = e.anulado;
 
             empleadosContext.SaveChanges();
 
