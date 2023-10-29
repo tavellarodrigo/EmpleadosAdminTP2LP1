@@ -46,6 +46,7 @@
             btnModificar = new Button();
             btnBaja = new Button();
             btnCerrar = new Button();
+            button1 = new Button();
             panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)empleadoBindingSource).BeginInit();
@@ -147,6 +148,7 @@
             flowLayoutPanel1.Controls.Add(btnModificar);
             flowLayoutPanel1.Controls.Add(btnBaja);
             flowLayoutPanel1.Controls.Add(btnCerrar);
+            flowLayoutPanel1.Controls.Add(button1);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -202,6 +204,15 @@
             btnCerrar.Text = "Salir";
             btnCerrar.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            button1.Location = new Point(3, 267);
+            button1.Name = "button1";
+            button1.Size = new Size(99, 38);
+            button1.TabIndex = 6;
+            button1.Text = "Salir";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // panel1
             // 
             panel1.Controls.Add(txtBuscar);
@@ -248,5 +259,6 @@
         private DataGridViewTextBoxColumn FechaIngreso;
         private DataGridViewTextBoxColumn Salario;
         private DataGridViewTextBoxColumn NombreDepartamento;
+        private Button button1;
     }
 }

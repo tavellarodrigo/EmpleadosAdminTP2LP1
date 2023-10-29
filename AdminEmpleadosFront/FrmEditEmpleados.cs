@@ -1,5 +1,6 @@
 ﻿using AdminEmpleadosEntidades;
 using AdminEmpleadosNegocio;
+using System.ComponentModel;
 
 
 namespace AdminEmpleadosFront
@@ -181,6 +182,19 @@ namespace AdminEmpleadosFront
         {
             //envio por parametro un departamento sin datos, asi va sin filtro y trae todos los dptos            
             departamentoBindingSource.DataSource = DepartamentosNegocio.Get();
+        }
+
+        private void txt_Validating(object sender, CancelEventArgs e)
+        {
+            errorProvider1.Clear();
+            if (String.IsNullOrEmpty(txtDni.Text.Trim()))
+            {
+                errorProvider1.SetError(txtDni, "Ingrese el DNI");
+            }
+            if (String.IsNullOrEmpty(txtNombre.Text.Trim()))
+            {
+                errorProvider1.SetError(txtNombre, "Ingrese el nombre");
+            }
         }
 
     }
