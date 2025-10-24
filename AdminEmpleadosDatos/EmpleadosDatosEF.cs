@@ -2,50 +2,54 @@
 using AdminEmpleadosEntidades;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Net.Http.Json;
 
 namespace AdminEmpleadosDatos
 {
     public static class EmpleadosDatosEF
     {
         static AdminEmpleadosDBContext? empleadosContext;
-
+        
         public static List<Empleado> Get(Empleado e)
         {
-            empleadosContext = new AdminEmpleadosDBContext();            
+            //empleadosContext = new AdminEmpleadosDBContext();
+            //if (empleadosContext.empleado == null)
+            //{
+            //    return new List<Empleado>();
+            //}
 
-            if (empleadosContext.empleado == null)
+            var client = new HttpClient();
+            //traer la URL de una config
+            //es mejor usar ASYNC, pero en este caso no lo uso para no cambiar la firma del metodo
+            List<Empleado> empleadosFromAPI = client.GetFromJsonAsync<List<Empleado>>("http://localhost:5189/api/Empleados").Result;
+
+            if (empleadosFromAPI == null)
             {
                 return new List<Empleado>();
             }
-            //Lazy Loading
-            //List<Empleado> list = empleadosContext.empleado.ToList(); //sin departamentos
 
             List<Empleado> list;
             if (String.IsNullOrWhiteSpace(e.Nombre) && String.IsNullOrWhiteSpace(e.Dni))
             {
-                list = empleadosContext.empleado.Include("Departamento").Where(e=>e.anulado == false).ToList();
+                //list = empleadosContext.empleado.Include("Departamento").Where(e => e.anulado == false).ToList();
+                list = empleadosFromAPI.Where(e => e.anulado == false).ToList();
             }
             else
             {
-                
-                /*
-                //con warnings, va a dar excepcion si nombre o dni estan nulos en la BD
-                list = empleadosContext.empleado.Include("Departamento").Where(i =>
-                    i.Nombre.Contains(e.Nombre)
-                    ||
-                    i.Dni.Contains(e.Dni)
-                    ).ToList();
-                */
 
-                //? operador ternario (es como un IF-ELSE) 
-                //?? operador de fusion de null (Asigna un valor cuando es NULL la variable de la izquierda)                
-                list = empleadosContext.empleado.Include("Departamento").Where(i =>
+                //list = empleadosContext.empleado.Include("Departamento").Where(i =>
+                //    (i.Nombre != null ? i.Nombre.Contains(e.Nombre ?? "") : true)
+                //    ||
+                //    (i.Dni != null ? i.Dni.Contains(e.Dni ?? "") : true)
+                //    ).Where(e => e.anulado == false).ToList();
+
+                list = empleadosFromAPI.Where(i =>
                     (i.Nombre != null ? i.Nombre.Contains(e.Nombre ?? "") : true)
                     ||
                     (i.Dni != null ? i.Dni.Contains(e.Dni ?? "") : true)
                     ).Where(e=>e.anulado == false).ToList();
             }
-            
+
 
             return list;
         }
