@@ -2,7 +2,9 @@
 using AdminEmpleadosEntidades;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Net.Http.Json;
+using System.Text;
 
 namespace AdminEmpleadosDatos
 {
@@ -56,17 +58,28 @@ namespace AdminEmpleadosDatos
 
         public static int Insert(Empleado e)
         {
-            empleadosContext = new AdminEmpleadosDBContext();
+            //empleadosContext = new AdminEmpleadosDBContext();
 
-            if (empleadosContext == null)
-            {
-                return 0;
-            }
+            //if (empleadosContext == null)
+            //{
+            //  return 0;
+            //}
+            // Crear el cliente
+            HttpClient client = new HttpClient();
+
+            // URL de la API a la que querés hacer POST
+            string url = "http://localhost:5189/api/Empleados";
             //seteo el ID en null para que realice el insert porque si tiene otro valor EF lo toma como un update
             e.EmpleadoId = null;
             e.anulado = false;
-            empleadosContext.Add(e);
-            empleadosContext.SaveChanges();
+            //empleadosContext.Add(e);
+            //empleadosContext.SaveChanges();
+
+            string json = System.Text.Json.JsonSerializer.Serialize(e);
+            var contenido = new StringContent(json, Encoding.UTF8, "application/json");
+            // Hacer la solicitud POST
+            //HttpResponseMessage respuesta = client.PostAsync(url, contenido);
+
             if (e.EmpleadoId == null)
                 return 0;
 
