@@ -12,17 +12,9 @@ namespace AdminEmpleadosDatos
         public static List<Empleado> Get(Empleado e)
         {
             empleadosContext = new AdminEmpleadosDBContext();            
-
-            if (empleadosContext.empleado == null)
-            {
-                return new List<Empleado>();
-            }
-            //Lazy Loading
-            //List<Empleado> list = empleadosContext.empleados.ToList(); //sin departamentos
-
-            List<Empleado> list = empleadosContext.empleado.Include("Departamento").ToList();            
-
-            return list;
+       
+            List<Empleado> list = empleadosContext.empleado.ToList(); //sin departamentos                                                                      //
+        return list;
         }
     }
 }
