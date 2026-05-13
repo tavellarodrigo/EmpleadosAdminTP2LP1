@@ -66,13 +66,14 @@ namespace AdminEmpleadosFront
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (empleadoBindingSource.Current == null)
+            //if (empleadoBindingSource.Current == null)
+            if (empleadoBindingSource.Current is not Empleado empleado)
                 return;
 
             FrmEditEmpleados frm = new FrmEditEmpleados();
 
             frm.modo = EnumModoForm.Modificacion;
-            frm._empleado = (Empleado)empleadoBindingSource.Current;
+            frm._empleado = empleado;
 
             frm.ShowDialog();
 
@@ -81,13 +82,14 @@ namespace AdminEmpleadosFront
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            if (empleadoBindingSource.Current == null)
+            //if (empleadoBindingSource.Current == null)
+            if (empleadoBindingSource.Current is not Empleado empleado)
                 return;
 
             FrmEditEmpleados frm = new FrmEditEmpleados();
 
             frm.modo = EnumModoForm.Consulta;
-            frm._empleado = (Empleado)empleadoBindingSource.Current;
+            frm._empleado = empleado;
 
             frm.ShowDialog();
 
