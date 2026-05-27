@@ -66,13 +66,16 @@ namespace AdminEmpleadosFront
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (empleadoBindingSource.Current == null)
+            if (empleadoBindingSource.Current is not Empleado emp)
+            {
+                MessageBox.Show("Seleccione el empleado");
                 return;
+            }
 
             FrmEditEmpleados frm = new FrmEditEmpleados();
 
             frm.modo = EnumModoForm.Modificacion;
-            frm._empleado = (Empleado)empleadoBindingSource.Current;
+            frm._empleado = emp;
 
             frm.ShowDialog();
 
@@ -81,13 +84,16 @@ namespace AdminEmpleadosFront
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            if (empleadoBindingSource.Current == null)
+            if (empleadoBindingSource.Current is not Empleado emp)
+            {
+                MessageBox.Show("Seleccione el empleado");
                 return;
+            }
 
             FrmEditEmpleados frm = new FrmEditEmpleados();
 
             frm.modo = EnumModoForm.Consulta;
-            frm._empleado = (Empleado)empleadoBindingSource.Current;
+            frm._empleado = emp;
 
             frm.ShowDialog();
 
@@ -96,10 +102,11 @@ namespace AdminEmpleadosFront
 
         private void btnBaja_Click(object sender, EventArgs e)
         {
-            if (empleadoBindingSource.Current == null)
+            if (empleadoBindingSource.Current is not Empleado emp)
+            {
+                MessageBox.Show("Seleccione el empleado");
                 return;
-
-            Empleado emp = (Empleado)empleadoBindingSource.Current;
+            }
 
             //pregunto si quiere guardar los datos
             DialogResult res = MessageBox.Show("¿Confirma anular el empleado " + emp.Nombre + " ?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

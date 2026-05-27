@@ -24,6 +24,7 @@ namespace AdminEmpleadosFront
             {
                 LimpiarControles();
                 HabilitarControles(true);
+                txt_Validating(null,null);
             }
             if (modo == EnumModoForm.Modificacion)
             {

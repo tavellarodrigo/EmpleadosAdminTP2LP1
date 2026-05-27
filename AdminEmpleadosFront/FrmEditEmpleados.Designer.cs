@@ -204,6 +204,7 @@
             // 
             // errorProvider1
             // 
+            errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             errorProvider1.ContainerControl = this;
             // 
             // FrmEditEmpleados
