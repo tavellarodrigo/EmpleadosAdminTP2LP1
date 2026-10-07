@@ -45,11 +45,6 @@ namespace AdminEmpleadosDatos
                     (i.Dni != null ? i.Dni.Contains(e.Dni ?? "") : true)
                     ).ToList();
 
-                list = empleadosContext.empleado.Include("Departamento").Where(i =>
-                    (i.Nombre != null ? i.Nombre.Contains(e.Nombre ?? "") : true)
-                    ||
-                    (i.Dni != null ? i.Dni.Contains(e.Dni ?? "") : true)
-                    ).ToList();
             }
             
 
