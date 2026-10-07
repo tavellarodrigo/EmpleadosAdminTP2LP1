@@ -22,31 +22,25 @@ namespace AdminEmpleadosDatos
 
             List<Empleado> list;
             if (String.IsNullOrWhiteSpace(e.Nombre) && String.IsNullOrWhiteSpace(e.Dni))
-            {
-                list = empleadosContext.empleado.Include("Departamento").ToList();
+            {                
+                list = empleadosContext.empleado.Include(i=>i.Departamento).ToList();
+                //list = empleadosContext.empleado.Include("Departamento").ToList();   -> tambien sirve
             }
             else
-            {
-                
-                /*
-                //con warnings, va a dar excepcion si nombre o dni estan nulos en la BD
-                list = empleadosContext.empleado.Include("Departamento").Where(i =>
-                    i.Nombre.Contains(e.Nombre)
-                    ||
-                    i.Dni.Contains(e.Dni)
-                    ).ToList();
-                */
+            {                           
 
                 //? operador ternario (es como un IF-ELSE) 
                 //?? operador de fusion de null (Asigna un valor cuando es NULL la variable de la izquierda)
-                list = empleadosContext.empleado.Include("Departamento").Where(i => 
-                    (i.Nombre != null?i.Nombre.Contains(e.Nombre??""):true)
-                    ||
-                    (i.Dni != null ? i.Dni.Contains(e.Dni ?? "") : true)
-                    ).ToList();
+   
+                var nombre = e.Nombre ?? ""; 
+                var dni = e.Dni == null ? "" : e.Dni;
 
-            }
-            
+                list = empleadosContext.empleado
+                    .Include(i => i.Departamento)
+                    .Where(i => (i.Nombre??"").Contains(nombre) || 
+                        (i.Dni??"").Contains(dni))
+                    .ToList();
+            }            
 
             return list;
         }
